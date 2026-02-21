@@ -183,7 +183,9 @@ def evaluate_problem(
         model_function=model_function,
         model_class=model_class,
         model_params=model_params,
-        input_params_names=problem["groups"],
+        # Always map sampled values using parameter names.
+        # `groups` are for Sobol aggregation only and can repeat labels.
+        input_params_names=problem["names"],
         T=problem["T"],
         U=problem["U"],
         X0=problem["X0"],
